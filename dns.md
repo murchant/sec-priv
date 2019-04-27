@@ -47,6 +47,29 @@
 - IANA (a part of ICANN) maintains the root zone content, which includes addresses for TLD authoritative servers and the root DNSSEC key.
 - Most root server instances are really a cluster of any-cast addressable instances, varying between 1 and 150 servers for a total of 446 instances in 2016.
 
+
+### DNS vulnerabilities
+- Man in middle attack- registry
+- Man in middle attack- recursive resolver "spoofing"
+- Server vulnerabilities
+
+
+### Other protection
+1. **TSIG (Transaction signed signature)**
+  - Authorising dynamic updates and zone transfers.
+  - Authentication of cache forwarders.
+  - Independent from other DNNSEC Features
+  - One way hash function
+  - DNS question or answer timestamp.
+  - Traffic signed with "shared_secret" key.
+  - Used in configuration, NOT in zone file.
+  Process:
+      1. Generate Secret
+      2. Communication Secret
+      3. Configure servers
+      4. Test
+
+
 ### DNSSEC
 
 - DNS developed in 80s and security measures were not in mind.
