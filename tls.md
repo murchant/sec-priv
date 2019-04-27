@@ -51,6 +51,29 @@
 | Client_Stream_Key |
 | Server_Stream_Key|
 
+### Applying keys to Application  Layer
+1. Divide stream into blocks.
+2. Compress them
+3. Compute MAC
+4. Block cipher with padding
+
+### Ciphersuites
+1. Ciphersuite is a set of encryption algorithms used in establishing secure connection.
+2. SSL/TLS supports various cryptographic
+options (BELOW)
+3. Design decision was to represent all
+choices made in a single value
+– Ciphersuite – a 16 bit number
+– TLS_RSA_WITH_3DES_EDE_CBC_SHA
+
+
+
+## TLS 1.2 BCP
+- Current BCP of TLSv1.2 = RFC 5246
+- BCP195/RFC 7525
+- Best Current Practice (BCP) that says what options to use and not use in general in applications using TLS
+
+**Strict TLS**
 
 ### HSTS
 - **HSTS:** HTTP Strict Transport Security.
@@ -62,12 +85,12 @@
 - *HTTP* servers SHOULD use.
 - **(RFC 6797)**
 
-## Compression
+### Compression
 - **BEAST** & **CRIME** attack show content of web cookies can be recovered when data compression is used along with **TLS**.
 - **Do not use compression**. Must not be supported
 - Some applications are fine but better to do at application layer.
 
-## Session
+### Session
 #### (Resumption/Renegotiation)
 - Session tickets must be as good as Cipher.
 - Tickets must be regularly changed (eg: Weekly). (RFC 5077).
@@ -75,7 +98,7 @@
 renegotiation_info extension/hack (RFC 5746)
 - Hack discovered where hacker can splice their own requests into the beginning conversation between Client and Server.
 
-## SNI Server Name Indication
+### SNI Server Name Indication
 - SNI must be supported (RFC 6066).
 - Explanation
   - TLS Handshake happens before application layer start.
@@ -86,7 +109,7 @@ renegotiation_info extension/hack (RFC 5746)
   - **Stephen:** but use of **SNI** is a "'local matter'".
   - SNI has privacy implications – TLSv1.2 does not provide confidentiality for handshake extensions like SNI.
 
-## ALPN
+### ALPN
 #### Application Layer Protocol Negotiation
 - ALPN (RFC 7301) is a TLS extension that allows a
 client and server to agree on which application layer protocol
@@ -95,13 +118,17 @@ client and server to agree on which application layer protocol
 that saw some initital use and was encrypted, but somewhat
 problematic
 
-## Ciphersuite Guidelines
+### Ciphersuite Guidelines
 | Should Not | Must Not | Must support |
 |-----------|----------| --------|
 | RSA Key Transport| NULL encryption| Forward Secrecy|
 | <128 bits of “strength” | RC4      |                      |
 | | <112 bits of “strength” |
 
-## Lengths/Strengths
-## 7525 Misc. Stuff
-## TLS Measurement
+**RECOMMENDED:**
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+### Lengths/Strengths
