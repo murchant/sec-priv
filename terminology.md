@@ -73,3 +73,21 @@ Environment **(ACME)**
   - Idea: append-only public logs of all certificates issued to allow detection of miss-issuance.
 
 ### S/MIME
+- S/MIME (Secure/Multipurpose Internet Mail Extensions) is a widely accepted method (or more precisely, a protocol) for sending digitally signed and encrypted messages
+- Most Mail User Agents (MUAs) support S/MIME or PGP.
+
+**Why is secure mail not ubiquitous ?**
+
+**End to end email is hard**
+#### Barriers
+- Designs pre-fate web user agents, which changes trust model (eg: where is p key kept)
+- Needs all major email service providers to deploy the same thing, which also needs to be done by all major MUAs.
+- Public key retrieval needs to be fixed, likely with some new PKI. Who will fund ???
+- Mail headers need to be protected. S/MIME and PGP only protect body and not e.g. Subject, From field.
+- need to unify S/MIME and PGP or pick one or we'll lose interoperability.
+
+#### Current Attempts
+- Autocrypt, p3=p, ProtonMail all worthy. None yet with real MUA traction.
+- Most email security today depends on TLS for mail transport security which *hop-by-hop* not *end-to-end*.
+- e2e email security doesn’t play so well with server-side antispam/malware/phishing techniques
+- Without e2e email security, "its all postcards".
