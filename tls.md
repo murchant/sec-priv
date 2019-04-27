@@ -132,3 +132,7 @@ problematic
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 
 ### Lengths/Strengths
+1. Integer DH: primes>=2048 bits long RECOMMENDED
+2. ECDH: >=192 bit curves RECOMMENDED
+3. RSA: >=2048 bit modulus RECOMMENDED
+4. ECDH preferred over integer DH, where possible
